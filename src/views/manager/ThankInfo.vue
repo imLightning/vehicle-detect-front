@@ -9,15 +9,17 @@
             height: 70vh;
         "
     >
-        <div class="title">算法开发</div>
-        <div class="info">徐继爽</div>
-        <div class="info">商广宇</div>
-        <div class="title">UI设计</div>
-        <div class="info">王力柱</div>
-        <div class="info">刘奕</div>
-        <div class="title">数据分析</div>
-        <div class="info">李智</div>
-        <div class="info">张浩然</div>
+        <div class="title">--Algorithm development--</div>
+        <div class="info">Jishuang Xu</div>
+        <div class="info">Guangyu Shang</div>
+        <div class="title">--Interface design--</div>
+        <div class="info">Lizhu Wang</div>
+        <div class="info">Yi Liu</div>
+        <div class="title">--Data test--</div>
+        <div class="info">Zhi Li</div>
+        <div class="info">Haoran Zhang</div>
+        <br/>
+        <div class="title">Thanks to all contributors !</div>
     </div>
 </template>
 

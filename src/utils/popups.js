@@ -80,3 +80,10 @@ export const errorLoading = () => {
         type: "error",
     });
 }
+
+export const successLoading = () => {
+    ElMessage({
+        message: "SUCCESS",
+        type: "success",
+    });
+}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import system_config from '@/system.config'
-import { showLoading, hideLoading, errorLoading } from "./popups";
+import { showLoading, hideLoading, errorLoading, successLoading } from "./popups";
 
 const axios_instance = axios.create({
   baseURL: system_config.baseUrl,
@@ -28,7 +28,10 @@ axios_instance.interceptors.response.use(
     if (res.config.headers.showLoading) {
       hideLoading();
     }
-    return Promise.resolve(res);
+    if(res.data.msg == 'success') {
+      successLoading();
+    }
+    return Promise.resolve(res.data);
   },
   (error) => {
     if (error.config.headers.showLoading) {
