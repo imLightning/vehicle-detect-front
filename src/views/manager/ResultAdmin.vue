@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { getfile, detectFile } from '@/api/file'
+import { getRes } from '@/api/result'
 import { reactive } from 'vue'
 
 const data = reactive({
@@ -23,16 +23,11 @@ const data = reactive({
 })
 
 const load = () => {
-    getfile().then(res => {
+    getRes().then(res => {
         data.file = res.data
     })
 }
 
 load()
 
-const detect = (filename) => {
-    detectFile({
-        filename,
-    })
-}
 </script>
