@@ -6,9 +6,9 @@
         <el-menu-item index="home">首页</el-menu-item>
         <el-sub-menu index="2">
             <template #title>工作台</template>
-            <el-menu-item index="record">录像管理</el-menu-item>
+            <el-menu-item index="record">视频录制</el-menu-item>
             <el-menu-item index="detect">实时检测</el-menu-item>
-            <el-menu-item index="2-3">三</el-menu-item>
+            <el-menu-item index="file">录像管理</el-menu-item>
             <el-sub-menu index="2-4">
                 <template #title>四</template>
                 <el-menu-item index="2-4-1">一</el-menu-item>

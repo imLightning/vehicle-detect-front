@@ -10,3 +10,10 @@ export const recordUpload = (data) => {
         data
     })
 }
+
+export const getfile = () => {
+    return request({
+        method: 'get',
+        url: '/file/get',
+    })
+}

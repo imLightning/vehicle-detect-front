@@ -12,7 +12,8 @@ const mainRouter = [
         { path: 'thank', name: 'thankInfo', component: () => import('@/views/manager/ThankInfo.vue')},
         { path: 'record', name: 'recordAdmin', component: () => import('@/views/manager/RecordAdmin.vue')},
         { path: 'detect', name: 'currentDetect', component: () => import('@/views/manager/CurrentDetect.vue')},
-        { path: 'set', name: 'coreSet', component: () => import('@/views/manager/CoreSet.vue')}
+        { path: 'set', name: 'coreSet', component: () => import('@/views/manager/CoreSet.vue')},
+        { path: 'file', name: 'fileAdmin', component: () => import('@/views/manager/fileAdmin.vue')}
       ]
     },
     {
