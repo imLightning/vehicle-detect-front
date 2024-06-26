@@ -2,6 +2,7 @@
     <div class="oper">
         <el-button type="success" plain :disabled="!data.saveState" @click="saveSetting">保存</el-button>
         <el-button type="danger" plain :disabled="!data.saveState" @click="cancel">取消</el-button>
+        <el-button type="danger" round  @click="loginOut">退出登录</el-button>
     </div>
     <div class="box">
         <div class="set"
@@ -24,7 +25,10 @@
 <script setup>
 import { reactive } from 'vue';
 import { getSetting, updateSetting } from '@/api/setting'
+import { localCache } from '@/utils/cache'
+import { useRouter } from "vue-router";
 
+const $router = useRouter();
 
 const data = reactive({
     setting: {},
@@ -60,6 +64,21 @@ const saveSetting = () => {
 const cancel = () => {
     load()
 }
+
+const loginOut = () => {
+    let tokenValue = Number(localCache.get("token"))
+    if (tokenValue) {
+        localCache.remove('token')
+        $router.push({ path: "/login" }).then(() => {
+            window.location.reload();
+        });
+        
+    }
+    
+}
+
+
+
 </script>
 
 <style>

@@ -10,7 +10,7 @@ const axios_instance = axios.create({
 axios_instance.interceptors.request.use(
   (config) => {
     if (config.headers.showLoading) {
-      showLoading();
+      showLoading(); 
     }
     return config;
   },
