@@ -1,7 +1,7 @@
 /* 
     弹出层：状态栏，消息，加载...
 */
-import { ElLoading, ElMessage } from 'element-plus'
+import { ElLoading, ElMessage, ElMessageBox  } from 'element-plus'
 
 // 全局变量
 let loaded = null;
@@ -86,4 +86,16 @@ export const successLoading = () => {
         message: "SUCCESS",
         type: "success",
     });
+}
+
+export const secondaryConfirm = () => {
+    return ElMessageBox.confirm(
+      '删除后无法恢复，是否继续？',
+      '警告',
+      {
+        confirmButtonText: '删除',
+        cancelButtonText: '取消',
+        type: 'warning',
+      }
+    )
 }

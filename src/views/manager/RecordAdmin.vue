@@ -10,6 +10,15 @@
             v-if="data.downloadUrl"
         ><el-button type="info" plain>下载视频</el-button></a>
         <el-button type="info" plain style="margin-left: 10px;" @click="sendRecord">发送</el-button>
+        <el-upload
+            v-model:file-list="data.fileList"
+            action="http://127.0.0.1:5000/upload"
+            :show-file-list="false"
+            :on-success="uploadSuccess"
+            style="margin-left: 10px;"
+        >
+            <el-button type="info" plain>上传视频</el-button>
+        </el-upload>
     </div>
     <video ref="video"></video>
     <br />
@@ -18,6 +27,7 @@
 <script setup>
 import { reactive, ref } from "vue";
 import { recordUpload } from '@/api/file.js'
+import { successLoading } from '@/utils/popups'
 
 let video = ref()
 
@@ -28,12 +38,17 @@ const data = reactive({
     recordedBlob: {},
     img: '',
     downloadUrl: '',
-    downloadName: ''
+    downloadName: '',
+    fileList: []
 })
 
 const signal = reactive({
     recorded: false
 })
+
+const uploadSuccess = () => {
+    successLoading()
+}
 
 const openCamera = () => {
     console.log('打开摄像头');

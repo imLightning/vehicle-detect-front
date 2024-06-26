@@ -17,3 +17,19 @@ export const getfile = () => {
         url: '/file/get',
     })
 }
+
+export const detectFile = (data) => {
+    return request({
+        method: 'POST',
+        url: '/file/detect',
+        data
+    })
+}
+
+export const deleteFile = (data) => {
+    return request({
+        method: 'POST',
+        url: '/file/delete',
+        data
+    })
+}
