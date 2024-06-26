@@ -3,7 +3,7 @@ const mainRouter = [
       path: '/',
       name: 'Manager',
       component: () => import('@/views/ManagerNav.vue'),
-      redirect: '/home',
+      redirect: '/login',
       meta: {
         title: '首页'
       },
@@ -14,7 +14,13 @@ const mainRouter = [
         { path: 'detect', name: 'currentDetect', component: () => import('@/views/manager/CurrentDetect.vue')},
         { path: 'set', name: 'coreSet', component: () => import('@/views/manager/CoreSet.vue')}
       ]
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('@/views/AdminLogin')
     }
+    
 ]
 
 export default mainRouter
