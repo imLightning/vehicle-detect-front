@@ -73,8 +73,8 @@
             if (valid) {
                 login(form).then((res) => {
                     if (res.code === 200) {
-                        localCache.set("token", res.data.id);
-                        if (Number(localCache.get("token")) === res.data.id) {
+                        if (res.data !== null) {
+                            localCache.set("token", res.data.id);
                             ElMessage({
                                 message: "登陆成功",
                                 type: "success"
