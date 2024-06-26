@@ -6,3 +6,11 @@ export const getRes = () => {
         url: '/res/get',
     })
 }
+
+export const delRes = (data) => {
+    return request({
+        method: 'post',
+        url: '/res/delete',
+        data,
+    })
+}

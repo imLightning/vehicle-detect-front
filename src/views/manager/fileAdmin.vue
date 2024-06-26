@@ -7,7 +7,11 @@
             <el-table-column prop="time" label="时间" width="120" />
             <el-table-column fixed="right" label="操作" min-width="120">
             <template v-slot="scope">
-                <el-button link type="primary" size="small" @click="detect(scope.row.filename)">检测</el-button>
+                <el-button link type="primary" size="small" @click="detect(scope.row.id, scope.row.filename)"
+                    :disabled="scope.row.state == '已检测'"
+                >检测</el-button>
+                <el-button link type="primary" size="small" @click="handle_del(scope.row.id, scope.row.filename)"
+                >删除</el-button>
             </template>
             </el-table-column>
         </el-table>
@@ -15,8 +19,9 @@
 </template>
 
 <script setup>
-import { getfile, detectFile } from '@/api/file'
+import { getfile, detectFile, deleteFile } from '@/api/file'
 import { reactive } from 'vue'
+import { secondaryConfirm } from '@/utils/popups'
 
 const data = reactive({
     file: []
@@ -25,14 +30,34 @@ const data = reactive({
 const load = () => {
     getfile().then(res => {
         data.file = res.data
+    }).catch(() => {
+
     })
 }
 
 load()
 
-const detect = (filename) => {
+const detect = (id, filename) => {
     detectFile({
+        id,
         filename,
+    }).then(() => {
+        load()
+    }).catch(() => {
+
+    })
+}
+
+const handle_del = (id, filename) => {
+    secondaryConfirm().then(() => {
+        deleteFile({
+            id,
+            filename
+        }).then(() => {
+            load()
+        }).catch(() => {})
+    }).catch(() => {
+
     })
 }
 </script>

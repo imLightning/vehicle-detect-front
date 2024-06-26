@@ -25,3 +25,11 @@ export const detectFile = (data) => {
         data
     })
 }
+
+export const deleteFile = (data) => {
+    return request({
+        method: 'POST',
+        url: '/file/delete',
+        data
+    })
+}
