@@ -10,6 +10,7 @@
             <!-- <el-menu-item index="detect">实时检测</el-menu-item> -->
             <el-menu-item index="file">录像管理</el-menu-item>
             <el-menu-item index="result">检测管理</el-menu-item>
+            <el-menu-item index="violate">超速抓拍</el-menu-item>
 
         </el-sub-menu>
         <el-menu-item index="3" disabled>其他</el-menu-item>

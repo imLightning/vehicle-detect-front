@@ -33,3 +33,10 @@ export const deleteFile = (data) => {
         data
     })
 }
+
+export const downloadRecord = (data) => {
+    return request({
+        method: 'POST',
+        url: '/record/download?id=' + data.id,
+    })
+}

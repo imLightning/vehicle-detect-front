@@ -14,7 +14,8 @@ const mainRouter = [
         { path: 'detect', name: 'currentDetect', component: () => import('@/views/manager/CurrentDetect.vue')},
         { path: 'set', name: 'coreSet', component: () => import('@/views/manager/CoreSet.vue')},
         { path: 'file', name: 'fileAdmin', component: () => import('@/views/manager/FileAdmin.vue')},
-        { path: 'result', name: 'resultAdmin', component: () => import('@/views/manager/ResultAdmin.vue')}
+        { path: 'result', name: 'resultAdmin', component: () => import('@/views/manager/ResultAdmin.vue')},
+        { path: 'violate', name: 'violateAdmin', component: () => import('@/views/manager/ViolateAdmin.vue')}
       ]
     },
     {

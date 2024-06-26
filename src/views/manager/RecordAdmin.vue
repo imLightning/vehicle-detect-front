@@ -1,15 +1,15 @@
 <template>
     <div class="operator">
-        <el-button type="info" plain @click="openCamera">打开摄像头</el-button>
-        <el-button type="info" plain @click="closeCamera">关闭摄像头</el-button>
+        <el-button type="primary" plain @click="openCamera">打开摄像头</el-button>
+        <el-button type="primary" plain @click="closeCamera">关闭摄像头</el-button>
         <div style="margin-left: 12px; display: flex; align-items: center;">
-            <el-button type="info" plain @click="changeRecord">{{ signal.recorded ? '结束录制' : '开始录制' }}</el-button>
+            <el-button type="primary" plain @click="changeRecord">{{ signal.recorded ? '结束录制' : '开始录制' }}</el-button>
             <div v-if="signal.recorded" style="margin-left: 12px; color: red;">录制中...</div>
         </div>
         <a :href="data.downloadUrl" :download="data.downloadName" style="margin-left: 10px;" 
             v-if="data.downloadUrl"
-        ><el-button type="info" plain>下载视频</el-button></a>
-        <el-button type="info" plain style="margin-left: 10px;" @click="sendRecord">发送</el-button>
+        ><el-button type="primary" plain>下载视频</el-button></a>
+        <el-button type="primary" plain style="margin-left: 10px;" @click="sendRecord">上传录像</el-button>
         <el-upload
             v-model:file-list="data.fileList"
             action="http://127.0.0.1:5000/upload"
@@ -17,7 +17,7 @@
             :on-success="uploadSuccess"
             style="margin-left: 10px;"
         >
-            <el-button type="info" plain>上传视频</el-button>
+            <el-button type="primary" plain>上传视频</el-button>
         </el-upload>
     </div>
     <video ref="video"></video>
