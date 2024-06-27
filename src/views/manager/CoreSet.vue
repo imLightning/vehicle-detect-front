@@ -45,7 +45,7 @@ const load = () => {
         for(let key of Object.keys(data.setting)) {
             data.inputState[key] = 0
         }
-    })
+    }).catch(() => {})
 }
 
 load()
@@ -57,7 +57,12 @@ const changeSet = (i) => {
 
 const saveSetting = () => {
     console.log(data.tempSetting);
-    updateSetting(data.tempSetting)
+    updateSetting({
+        attr: 'SPEED_LIMIT',
+        val: data.tempSetting['SPEED_LIMIT']
+    }).then(() =>{
+        localCache.set("SPEED_LIMIT", data.tempSetting['SPEED_LIMIT'])
+    }).catch(() => {})
     load()
 }
 

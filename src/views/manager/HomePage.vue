@@ -2,9 +2,9 @@
   <div class="bg">
     <h1 class="header">欢迎使用智慧交通车速检测系统</h1>
     <div class="btn">
-      <el-button class="button" type="primary" @click="toFilePage()">
+      <button class="bttn" @click="toFilePage()">
         进入工作台<el-icon><ArrowRightBold /></el-icon>
-      </el-button>
+      </button>
     </div>
   </div>
 </template>
@@ -54,16 +54,16 @@ const toFilePage = () => {
   margin: 0 auto;
 }
 
-.button {
+.btn :hover {
+  background-color: rgb(255, 255, 255);
+}
+.bttn {
+  background-color: transparent;
   height: 100%;
   width: 100%;
   border-radius: 30px;
   font-size: 50px;
-  box-shadow: 0 0 20px 10px #67b5ff;
-}
-
-el-button {
-  color: rgb(255, 171, 103)
+  box-shadow: 0 0 20px 10px #b3d6f6;
 }
 
 </style>
