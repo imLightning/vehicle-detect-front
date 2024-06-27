@@ -28,6 +28,7 @@
 import { reactive, ref } from "vue";
 import { recordUpload } from '@/api/file.js'
 import { successLoading } from '@/utils/popups'
+import { ElMessage } from "element-plus";
 
 let video = ref()
 
@@ -39,7 +40,9 @@ const data = reactive({
     img: '',
     downloadUrl: '',
     downloadName: '',
-    fileList: []
+    fileList: [],
+    carmera_sign: 0,
+    notfirst: 0
 })
 
 const signal = reactive({
@@ -51,6 +54,7 @@ const uploadSuccess = () => {
 }
 
 const openCamera = () => {
+    data.carmera_sign = 1
     console.log('打开摄像头');
     navigator.mediaDevices.getUserMedia({
         video: true,
@@ -72,7 +76,10 @@ const closeCamera = () => {
 }
 
 const startRecord = () => {
-    signal.recorded = true
+    if(data.notfirst == 1) {
+        location.reload()
+        return
+    }
     let mediaRecorder;
     let options;
     data.fakeRecordedBlobs = []
@@ -91,13 +98,22 @@ const startRecord = () => {
                 mimeType: 'video/webm;codecs=vp8',
             };
         }
+        if(data.carmera_sign == 0) {
+            ElMessage.error('请先开启摄像头！')
+            return
+        }
         mediaRecorder = new MediaRecorder(data.videoStream, options);
     } else {
         // console.log('isTypeSupported is not supported, using default codecs for browser');
         console.log('当前不支持isTypeSupported，使用浏览器的默认编解码器');
+        if(data.carmera_sign == 0) {
+            ElMessage.error('请先开启摄像头！')
+            return
+        }
         mediaRecorder = new MediaRecorder(data.videoStream);
     }
     mediaRecorder.start();
+    signal.recorded = true
     // 视频录制监听事件
     mediaRecorder.ondataavailable = e => {
         console.log(e);
@@ -121,6 +137,7 @@ const startRecord = () => {
 }
 
 const endRecord = () => {
+    data.notfirst = 1
     signal.recorded = false
     if (!video.value.srcObject) return;
     const stream = video.value.srcObject;
@@ -144,6 +161,10 @@ const changeRecord = () => {
 const sendRecord = () => {
     console.log('发送');
     if(!data.recordedBlob) return ;
+    if(typeof data.recordedBlob != Blob) {
+        ElMessage.error('请先录制视频')
+        return;
+    }
     // 创建FormData对象
     let formData = new FormData();
     formData.append('record', data.recordedBlob, 'record.mp4');

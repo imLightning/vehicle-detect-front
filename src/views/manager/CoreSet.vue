@@ -45,6 +45,7 @@ const load = () => {
         for(let key of Object.keys(data.setting)) {
             data.inputState[key] = 0
         }
+        localCache.set("SPEED_LIMIT", data.setting['SPEED_LIMIT'])
     }).catch(() => {})
 }
 
